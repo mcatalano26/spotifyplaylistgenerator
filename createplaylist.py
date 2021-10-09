@@ -1,11 +1,12 @@
 import os
+from decouple import config
 
 from spotifyclient import SpotifyClient
 
 
 def main():
-    spotify_client = SpotifyClient(os.getenv("SPOTIFY_AUTHORIZATION_TOKEN"),
-                                   os.getenv("SPOTIFY_USER_ID"))
+    spotify_client = SpotifyClient(config("SPOTIFY_AUTHORIZATION_TOKEN"),
+                                   config("SPOTIFY_USER_ID"))
 
     # get last played tracks
     num_tracks_to_visualise = int(input("How many tracks would you like to visualise? "))
